@@ -8,12 +8,19 @@ public class NumberBet extends Bet {
         setNumber(number);
     }
     public int getNumber() {
+
         return number;
     }
     public void setNumber(int number) throws BetException {
+        if(number<0 || number>36){
+            throw new BetException(BetException.INVALID_NUMBER);
+        }
         this.number = number;
     }
     @Override
-    public void calculateResult(int winnerNumber) {
+    public void calculeResult(int winnerNumber) {
+        if(winnerNumber == getNumber()){
+            super.setAmountWon(super.getAmount()*5.0);
+        }
     }
 }
