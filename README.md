@@ -3,7 +3,6 @@
 ## Pre-requisitos
 * [MAVEN](https://maven.apache.org/) - Administrador de dependencias.
 * [GIT](https://git-scm.com/) - Control de versiones.
-* [DOCKER](https://www.docker.com/) - Contenedores.   
 
 Para estar seguro de las versiónes que posee de maven, git y de java ejecute los siguientes comandos:
 ```
@@ -27,10 +26,6 @@ Para ejecutar el proyecto de manera local desde la consola de comandos ejecutamo
 ```
 java -cp target/classes;target/dependency/*  org.masivian.test.App
 ```
-Si se quiere ejcutar como un contenedor de Docker:
-```
-docker-compose up -d 
-```
 ## Ejemplos de creación de apuestas.
 ### Creación de apuesta por numero.
 ![NumberBet](https://github.com/Camu10/MasivianRouletteAPI/blob/main/img/NumberBet.jpg)
@@ -41,7 +36,6 @@ docker-compose up -d
 * [MAVEN](https://maven.apache.org/) - Administrador de dependencias.
 * [GIT](https://git-scm.com/) - Control de versiones.
 * [JUNIT](https://junit.org/junit5/) - Framework para realizar y automatizar pruebas.
-* [DOCKER](https://www.docker.com/) - Tecnología para el uso de contenedores.
 * JAVA - Lenguaje de programación.
 
 ## Autor
