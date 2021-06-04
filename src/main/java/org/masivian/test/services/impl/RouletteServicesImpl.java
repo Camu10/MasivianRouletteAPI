@@ -8,32 +8,47 @@ import java.util.ArrayList;
 import java.util.List;
 @Service
 public class RouletteServicesImpl implements RouletteServices {
+    private List<Roulette> roulettes = new ArrayList<>();
     @Override
     public int createRoulette() {
         Roulette roulette = new Roulette();
+        roulettes.add(roulette);
 
         return roulette.getId();
     }
     @Override
     public void openRoulette(int id) throws RouletteException {
-        Roulette roulette = null;
-        roulette.openRoulette();
+        for(Roulette roulette1:roulettes){
+            if(roulette1.getId() == id){
+                roulette1.openRoulette();
+                break;
+            }
+        }
     }
     @Override
-    public void addBetToRoulette(Bet bet, int rouletteId) throws RouletteException{
-        Roulette roulette = null;
-        roulette.addBet(bet);
+    public void addBetToRoulette(Bet bet, int rouletteId) throws RouletteException  {
+        for(Roulette roulette:roulettes){
+            if(roulette.getId() == rouletteId){
+                roulette.addBet(bet);
+                break;
+            }
+        }
     }
     @Override
-    public List<Bet> closeRoulette(int rouletteId) throws RouletteException{
+    public List<Bet> closeRoulette(int rouletteId) throws RouletteException {
         Roulette roulette = null;
-        roulette.close();
+        for(Roulette roulette1:roulettes) {
+            if (roulette1.getId() == rouletteId) {
+                roulette1.close();
+
+                return roulette1.getBetList();
+            }
+        }
 
         return roulette.getBetList();
     }
     @Override
     public List<Roulette> getAllRoulettes() {
-        List<Roulette> roulettes = new ArrayList<>();
 
         return roulettes;
     }

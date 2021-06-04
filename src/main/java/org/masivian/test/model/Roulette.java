@@ -1,8 +1,11 @@
 package org.masivian.test.model;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-public class Roulette {
+import java.util.concurrent.atomic.AtomicInteger;
+public class Roulette implements Serializable {
+    private static AtomicInteger generatorId = new AtomicInteger(1);
     private int id;
     private RouletteState rouletteState;
     private List<Bet> betList;
@@ -10,6 +13,7 @@ public class Roulette {
     public Roulette() {
         setRouletteState(RouletteState.OPEN);
         setBetList(new ArrayList<>());
+        id = generatorId.getAndIncrement();
     }
     public int getId() {
 
@@ -51,7 +55,7 @@ public class Roulette {
         Random random = new Random();
         setWinnerNumber(random.nextInt(37));
         for(Bet bet: getBetList()){
-            bet.calculeResult(getWinnerNumber());
+            bet.calculateResult(getWinnerNumber());
         }
     }
 }

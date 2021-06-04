@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 @RestController
 @RequestMapping("api")
 public class RouletteController {
@@ -24,9 +23,9 @@ public class RouletteController {
             rouletteServices.openRoulette(idRoulette);
 
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
-        } catch (RouletteException e) {
+        } catch (RouletteException  e) {
 
-            return new ResponseEntity<>(e.getMessage(),HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
     @RequestMapping( value = "/addBet/{idRoulette}", method = RequestMethod.POST )
@@ -36,7 +35,7 @@ public class RouletteController {
             rouletteServices.addBetToRoulette(bet, idRoulette);
         } catch (RouletteException e) {
 
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
         return new ResponseEntity<>(HttpStatus.OK);
@@ -48,7 +47,7 @@ public class RouletteController {
             return new ResponseEntity<>(rouletteServices.closeRoulette(idRoulette),HttpStatus.OK);
         } catch (RouletteException e) {
 
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
     @RequestMapping( value = "/allRoulettes", method = RequestMethod.GET )

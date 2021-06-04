@@ -1,7 +1,12 @@
 package org.masivian.test.model;
-
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.masivian.test.exceptions.BetException;
-
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property="type")
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = ColorBet.class, name = "ColorBet"),
+        @JsonSubTypes.Type(value = NumberBet.class, name = "NumberBet")
+})
 public abstract class Bet {
     private int id;
     private double amount;
@@ -44,5 +49,5 @@ public abstract class Bet {
     public void setAmountWon(double amountWon) {
         this.amountWon = amountWon;
     }
-    public abstract void calculeResult(int winnerNumber);
+    public abstract void calculateResult(int winnerNumber);
 }
